@@ -5,7 +5,6 @@ class XMassTreeTest4(StageTest):
 
 #    def generate(self) -> List[TestCase]:
 #        return [TestCase(time_limit=1000000)]#
-
     def check(self, reply: str):
 
         if len(reply) == 0:
