@@ -1,6 +1,11 @@
 from hstest import StageTest, TestCase, CheckResult
 from hstest.stage_test import List
 
+#  !!!!!!!!!!!!!!!
+#  Stowrzyć algorytm na bombkim, czyli która linia, na której pozycji.
+#  I ilość gwiazdek minus licza bombek ma się zgadzać. :D
+
+
 class XMassTreeTest3(StageTest):
 
 #    def generate(self) -> List[TestCase]:

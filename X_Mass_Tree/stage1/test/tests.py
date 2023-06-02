@@ -1,6 +1,11 @@
 from hstest import StageTest, TestCase, CheckResult
 from hstest.stage_test import List
 
+#  !!!!!!!!!!!!!!!!!!
+#  Ilość linii, start gwiazdek w każdej (ale nie ogólnie tylko rosnąco)
+#  i suma gwiazdek.
+
+
 class XMassTreeTest1(StageTest):
 
 #    def generate(self) -> List[TestCase]:

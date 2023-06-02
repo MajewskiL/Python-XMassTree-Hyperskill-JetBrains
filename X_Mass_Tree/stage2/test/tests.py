@@ -1,6 +1,11 @@
 from hstest import StageTest, TestCase, CheckResult
 from hstest.stage_test import List
 
+#  !!!!!!!!!!!!!!!!!!!!!!
+#  Algorytm gdzie mam być czubek, czubek choinki, pień, pierwszy i ostatni listek
+#  na jakiej pozycja dla całej choinki, czyli pary koordynatów dla każdej
+#  linii i suma gwiazdek!
+
 class XMassTreeTest2(StageTest):
 
 #    def generate(self) -> List[TestCase]:

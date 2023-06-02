@@ -23,7 +23,7 @@ def tree3(high, interval):
     return tree
 
 
-def tree_4(top_list):
+def tree4(top_list):
     square_x = 30
     square_y = 50
     area_t = list()
@@ -56,5 +56,12 @@ def tree_4(top_list):
     print(*area_t, sep="\n")
 
 
-#  figure out how to collect the input
-tree_4([(7, 3, 7, 37), (4, 2, 10, 25), (11, 1, 5, 14), (10, 4, 9, 30), (5, 4, 16, 19)])
+trees = list(map(int, input().split(" ")))
+if len(trees) == 2:
+    print(*tree3(trees[0], trees[1]), sep="\n")
+else:
+    print(len(trees))
+    print([trees[x: x + 4] for x in range(0, len(trees), 4)])
+    tree4([trees[x: x + 4] for x in range(0, len(trees), 4)])
+
+#  7 3 7 37 4 2 10 25 11 1 5 14 10 4 9 30 5 4 16 19
