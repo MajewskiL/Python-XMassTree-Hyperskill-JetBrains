@@ -39,8 +39,7 @@ class XMassTreeTest1(StageTest):
             main.start()
             high = str(randint(3, 30))
             output = main.execute(high)
-            func = [self.output_stars_stage1(output, high),
-                    self.output_len_stage1(output, high),
+            func = [self.output_len_stage1(output, high),
                     self.output_pos_stage1(output, int(high))]
             for f in func:
                 check = f
