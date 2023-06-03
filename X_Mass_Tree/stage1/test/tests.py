@@ -21,7 +21,7 @@ class XMassTreeTest1(StageTest):
     @staticmethod
     def output_pos_stage1(out, high):
         out = out.splitlines()
-        out_pos = [[n.index("*") if "*" in n else 0, n.count("*"), len(n.strip())] for n in out]
+        out_pos = [[n.index("*") if "*" in n else None, n.count("*"), len(n.strip())] for n in out]
         exp_pos = [[int(high - n - 1), 2 * n + 1, 2 * n + 1] for n in range(high)]
         for i, value in enumerate(out_pos):
             if value[0] != exp_pos[i][0]:
