@@ -1,5 +1,4 @@
 from hstest import StageTest, CheckResult, dynamic_test, TestedProgram
-from hstest.stage_test import List
 from random import randint
 
 
@@ -22,40 +21,30 @@ class XMassTreeTest1(StageTest):
     @staticmethod
     def output_pos_stage1(out, high):
         out = out.splitlines()
-        out_pos = [n.index("*") for n in out]
-        exp_pos = [int(high - n - 1) for n in range(high)]
+        out_pos = [[n.index("*") if "*" in n else 0, n.count("*"), len(n.strip())] for n in out]
+        exp_pos = [[int(high - n - 1), 2 * n + 1, 2 * n + 1] for n in range(high)]
         for i, value in enumerate(out_pos):
-            if value != exp_pos[i]:
-                return f"Wrong position of '*' in line {i}. Expected {exp_pos[i]}, founded {value}."
+            if value[0] != exp_pos[i][0]:
+                return f"Wrong position of '*' in line {i}. Expected {exp_pos[i][0]}, founded {value[0]}."
+            if value[1] != exp_pos[i][1]:
+                return f"Wrong number of '*' in line {i}. Expected {exp_pos[i][1]}, founded {value[1]}."
+            if value[2] != exp_pos[i][2]:
+                return f"Wrong width of the tree in line {i}. Expected {exp_pos[i][2]} chars, founded {value[2]} chars."
         return
 
     @dynamic_test
     def test1(self):
-        high = str(randint(3, 30))
-        # high = '3'
-        main = TestedProgram()
-        main.start()
-        output = main.execute(high)
-        check = self.output_stars_stage1(output, high)
-        if check:
-            return CheckResult.wrong(check)
-        check = self.output_len_stage1(output, high)
-        if check:
-            return CheckResult.wrong(check)
-        check = self.output_pos_stage1(output, int(high))
-        if check:
-            return CheckResult.wrong(check)
-
-#    if len(reply) == 0:
-#        return CheckResult.wrong("No output was printed!")
-
-        #reply = float(reply)
-        #tolerance = 0.1
-
-        # Getting the student's results from the reply
-
-        #if tolerance:
-        #    if not (abs((reply - true_data) / true_data) < tolerance):
-        #        return CheckResult.wrong('Incorrect value.')
+        for _ in range(3):
+            main = TestedProgram()
+            main.start()
+            high = str(randint(3, 30))
+            output = main.execute(high)
+            func = [self.output_stars_stage1(output, high),
+                    self.output_len_stage1(output, high),
+                    self.output_pos_stage1(output, int(high))]
+            for f in func:
+                check = f
+                if check:
+                    return CheckResult.wrong(check)
 
         return CheckResult.correct()
