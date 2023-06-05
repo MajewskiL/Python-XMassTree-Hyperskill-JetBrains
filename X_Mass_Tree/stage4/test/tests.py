@@ -84,22 +84,40 @@ class XMassTreeTest4(StageTest):
         if not all(lines_width):
             print([len(n) for n in out])
             return f"Wrong card size. At least one of the lines has not {width} width.\n" \
-                   f"Check line(s): {[i for i, n in enumerate(lines_width) if not n]}"
+                   f"Check line(s): {[i + 1 for i, n in enumerate(lines_width) if not n]}"
         if out[0].count("-") != width or out[-1].count("-") != width:
             return f"{'First' if out[0].count('-') != width else 'Last'} line doesn't contain only '-'."
         for i, o in enumerate(out[1:-1]):
             if not o.startswith("|"):
-                return f"Line {i + 1} doesn't starts with '|'"
+                return f"Line {i + 2} doesn't starts with '|'"
             if not o.endswith("|"):
-                return f"Line {i + 1} doesn't ends with '|'"
+                return f"Line {i + 2} doesn't ends with '|'"
         return
 
     @staticmethod
-    def check_sentence():
+    def check_sentence(out, high, width):
+        out = out.splitlines()
+        out = out[high - 3]
+        text = "Merry Xmas"
+        if out.strip("|").strip() != text:
+            return f"Line {high - 2} doesn't contains the sentence '{text}'"
+        if out.index(text) != (width / 2) - len(text) / 2:
+            return f"The sentence '{text}' is not in the middle of the card."
         return
 
     @staticmethod
-    def check_hash():
+    def check_hash(out, org_hash):
+        out = ''.join([o[1:-1] for o in out.splitlines()[1:-1]])
+        hash = 5381
+        for x in out:
+            # ord(x) simply returns the unicode rep of the
+            # character x
+            hash = ((hash << 5) + hash) + ord(x)
+        # Note to clamp the value so that the hash is
+        # related to the power of 2
+        print(hash & 0xFFFFFFFF)
+        if hash & 0xFFFFFFFF != org_hash:
+            return f"The hash function for trees returned wrong value."
         return
 
 
@@ -122,16 +140,17 @@ class XMassTreeTest4(StageTest):
 
     @dynamic_test
     def test2(self):
-        test_cases = ["7 3 7 37 4 2 10 25 11 1 5 14 10 4 9 30 5 4 16 19"]
+        test_cases = [["7 3 7 37 4 2 10 25 11 1 5 14 10 4 9 30 5 4 16 19", 1842662624],
+                      ["5 1 4 10 5 2 4 37 5 3 4 17 5 4 4 30 5 5 4 24 5 3 12 24 5 2 12 17 5 1 12 30", 3029538451]]
         for _ in range(2):
             pass
         for case in test_cases:
             main = TestedProgram()
             main.start()
-            output = main.execute(case)
+            output = main.execute(case[0])
             func = [self.check_card(output, 30, 50),
-                    self.check_sentence(),
-                    self.check_hash()]
+                    self.check_sentence(output, 30, 50),
+                    self.check_hash(output, case[1])]
             for f in func:
                 check = f
                 if check:
