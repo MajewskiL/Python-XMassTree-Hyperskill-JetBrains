@@ -35,14 +35,15 @@ def tree4(top_list):
     for i in range(square_y):
         area_t[0][i] = "-"
         area_t[square_x - 1][i] = "-"
+
     for i in range(1, square_x - 1):
         area_t[i][0] = "|" #  str(i % 10)
         area_t[i][square_y - 1] = "|" #  str(i % 10)
     for top in top_list:
         tree = tree3(top[0], top[1])
-        x = top[2]
+        x = top[2] - 1
         for line in tree:
-            y = top[3] - int(((len(tree[-2]) - 1) / 2))
+            y = top[3] - int(((len(tree[-2]) - 1) / 2)) - 1
             for i in range(len(line)):
                 if line[i] != " ":
                     area_t[x][y + i] = line[i]
@@ -57,11 +58,14 @@ def tree4(top_list):
 
 
 trees = list(map(int, input().split(" ")))
+#trees = [5, 1, 4, 10, 5, 2, 4, 37, 5, 3, 4, 17, 5, 4, 4, 30, 5, 5, 4, 24, 5, 3, 12, 24, 5, 2, 12, 17, 5, 1, 12, 30]
 if len(trees) == 2:
     print(*tree3(trees[0], trees[1]), sep="\n")
 else:
-    print(len(trees))
-    print([trees[x: x + 4] for x in range(0, len(trees), 4)])
-    tree4([trees[x: x + 4] for x in range(0, len(trees), 4)])
+
+    data = [trees[x: x + 4] for x in range(0, len(trees), 4)]
+
+    #tree4(data) # [data[1], data[0], data[2], data[3], data[4])
+    tree4(data)
 
 #  7 3 7 37 4 2 10 25 11 1 5 14 10 4 9 30 5 4 16 19
