@@ -23,7 +23,7 @@ class XMassTreeTest4(StageTest):
     @staticmethod
     def output_ext_stage2(out, high):
         out = out.splitlines()
-        ext = [("X", 0, 0), ("^", 1, 0), ("I I", len(out) - 1, -1)]
+        ext = [("X", 0, 0), ("^", 1, 0), ("| |", len(out) - 1, -1)]
         for item, i, correction in ext:
             out_pos = [out[i].index(item) if item in out[i] else None,
                        out[i].count(item),
@@ -115,7 +115,7 @@ class XMassTreeTest4(StageTest):
             hash = ((hash << 5) + hash) + ord(x)
         # Note to clamp the value so that the hash is
         # related to the power of 2
-        print(hash & 0xFFFFFFFF)
+        # print(hash & 0xFFFFFFFF)
         if hash & 0xFFFFFFFF != org_hash:
             return f"The hash function for trees returned wrong value."
         return
@@ -140,8 +140,8 @@ class XMassTreeTest4(StageTest):
 
     @dynamic_test
     def test2(self):
-        test_cases = [["7 3 7 37 4 2 10 25 11 1 5 14 10 4 9 30 5 4 16 19", 1842662624],
-                      ["5 1 4 10 5 2 4 37 5 3 4 17 5 4 4 30 5 5 4 24 5 3 12 24 5 2 12 17 5 1 12 30", 3029538451]]
+        test_cases = [["7 3 7 37 4 2 10 25 11 1 5 14 10 4 9 30 5 4 16 19", 2785955136],
+                      ["5 1 4 10 5 2 4 37 5 3 4 17 5 4 4 30 5 5 4 24 5 3 12 24 5 2 12 17 5 1 12 30", 1551703891]]
         for _ in range(2):
             pass
         for case in test_cases:

@@ -18,7 +18,7 @@ class XMassTreeTest2(StageTest):
     @staticmethod
     def output_ext_stage2(out, high):
         out = out.splitlines()
-        ext = [("X", 0, 0), ("^", 1, 0), ("I I", len(out) - 1, -1)]
+        ext = [("X", 0, 0), ("^", 1, 0), ("| |", len(out) - 1, -1)]
         for item, i, correction in ext:
             out_pos = [out[i].index(item) if item in out[i] else None,
                        out[i].count(item),
