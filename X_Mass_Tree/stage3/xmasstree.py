@@ -19,7 +19,7 @@ def tree3(high, interval):
                         to_print += "O"
                     bomb += 1
             tree.append(f"{(high - n - 1) * ' '}/{to_print}\\")
-    tree.append(f"{(high - 2) * ' '}I I")
+    tree.append(f"{(high - 2) * ' '}| |")
     return tree
 
 
