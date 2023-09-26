@@ -7,7 +7,7 @@ def tree_2(high):
             print(f"{(high - n - 1) * ' '}/{(2 * (n - 1) + 1) * '*'}\\")
         else:
             print(f"{(high - n - 1) * ' '}/{(2 * (n - 1) + 1) * '*'}\\")
-    print(f"{(high - 2) * ' '}I I")
+    print(f"{(high - 2) * ' '}| |")
 
 
 tree_2(int(input()))
