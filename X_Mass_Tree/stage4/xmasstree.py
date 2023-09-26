@@ -19,7 +19,7 @@ def tree3(high, interval):
                         to_print += "O"
                     bomb += 1
             tree.append(f"{(high - n - 1) * ' '}/{to_print}\\")
-    tree.append(f"{(high - 2) * ' '}I I")
+    tree.append(f"{(high - 2) * ' '}| |")
     return tree
 
 
@@ -64,7 +64,7 @@ if len(trees) == 2:
 else:
 
     data = [trees[x: x + 4] for x in range(0, len(trees), 4)]
-
+    #data = [data[3], *data[:3]]
     #tree4(data) # [data[1], data[0], data[2], data[3], data[4])
     tree4(data)
 

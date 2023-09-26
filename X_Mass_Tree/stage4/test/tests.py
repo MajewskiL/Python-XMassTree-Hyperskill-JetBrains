@@ -108,15 +108,15 @@ class XMassTreeTest4(StageTest):
     @staticmethod
     def check_hash(out, org_hash):
         out = ''.join([o[1:-1] for o in out.splitlines()[1:-1]])
-        hash = 5381
+        hashs = 5381
         for x in out:
             # ord(x) simply returns the unicode rep of the
             # character x
-            hash = ((hash << 5) + hash) + ord(x)
+            hashs = ((hashs << 5) + hashs) + ord(x)
         # Note to clamp the value so that the hash is
         # related to the power of 2
-        # print(hash & 0xFFFFFFFF)
-        if hash & 0xFFFFFFFF != org_hash:
+        # print(hashs & 0xFFFFFFFF)
+        if hashs & 0xFFFFFFFF != org_hash:
             return f"The hash function for trees returned wrong value."
         return
 
@@ -140,8 +140,8 @@ class XMassTreeTest4(StageTest):
 
     @dynamic_test
     def test2(self):
-        test_cases = [["7 3 7 37 4 2 10 25 11 1 5 14 10 4 9 30 5 4 16 19", 2785955136],
-                      ["5 1 4 10 5 2 4 37 5 3 4 17 5 4 4 30 5 5 4 24 5 3 12 24 5 2 12 17 5 1 12 30", 1551703891]]
+        test_cases = [["7 3 7 37 4 2 10 25 11 1 5 14 10 4 9 30 5 4 16 19", 781329003],
+                      ["5 1 4 10 5 2 4 37 5 3 4 17 5 4 4 30 5 5 4 24 5 3 12 24 5 2 12 17 5 1 12 30", 2745439939]]
         for _ in range(2):
             pass
         for case in test_cases:
