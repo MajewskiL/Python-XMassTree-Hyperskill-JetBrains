@@ -129,7 +129,8 @@ class XMassTreeTest4(StageTest):
         # related to the power of 2
         # print(hashs & 0xFFFFFFFF)
         if hashs & 0xFFFFFFFF != org_hash:
-            return f"The hash function for trees returned wrong value."
+            return (f"The hash function for trees returned wrong value. \n"
+                    f"Tops of trees are correct, the sentence and the border lines too.")
         return
 
 
@@ -171,21 +172,5 @@ class XMassTreeTest4(StageTest):
                     return CheckResult.wrong(check)
         return CheckResult.correct()
 
-'''    @dynamic_test
-    def test1(self):
-        for _ in range(3):
-            main = TestedProgram()
-            main.start()
-            high = str(randint(3, 30))
-            interval = str(randint(1, 9))
-            output = main.execute(f"{high} {interval}")
-            func = [self.output_len_stage1(output, high),
-                    self.output_ext_stage2(output, int(high)),
-                    self.output_pos_stage3(output, int(high), int(interval))]
-            for f in func:
-                check = f
-                if check:
-                    return CheckResult.wrong(check)
-        return CheckResult.correct()'''
 
 
