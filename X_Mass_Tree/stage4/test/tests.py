@@ -106,6 +106,19 @@ class XMassTreeTest4(StageTest):
         return
 
     @staticmethod
+    def check_tops(out, tops):
+        out = out.splitlines()
+        text = "X"
+        tops = tops.split(" ")
+        tops = list(map(int, tops))
+        tops = list(zip(tops[2::4], tops[3::4]))
+        for top in tops:
+            print(out[top[0]][top[1]])
+            if out[top[0]][top[1]] != text:
+                return f"The top {top} is not in correct place."
+        return
+
+    @staticmethod
     def check_hash(out, org_hash):
         out = ''.join([o[1:-1] for o in out.splitlines()[1:-1]])
         hashs = 5381
@@ -138,6 +151,7 @@ class XMassTreeTest4(StageTest):
                     return CheckResult.wrong(check)
         return CheckResult.correct()
 
+
     @dynamic_test
     def test2(self):
         test_cases = [["7 3 7 37 4 2 10 25 11 1 5 14 10 4 9 30 5 4 16 19", 781329003],
@@ -150,9 +164,29 @@ class XMassTreeTest4(StageTest):
             output = main.execute(case[0])
             func = [self.check_card(output, 30, 50),
                     self.check_sentence(output, 30, 50),
+                    self.check_tops(output, case[0]),
                     self.check_hash(output, case[1])]
             for f in func:
                 check = f
                 if check:
                     return CheckResult.wrong(check)
         return CheckResult.correct()
+
+'''    @dynamic_test
+    def test1(self):
+        for _ in range(3):
+            main = TestedProgram()
+            main.start()
+            high = str(randint(3, 30))
+            interval = str(randint(1, 9))
+            output = main.execute(f"{high} {interval}")
+            func = [self.output_len_stage1(output, high),
+                    self.output_ext_stage2(output, int(high)),
+                    self.output_pos_stage3(output, int(high), int(interval))]
+            for f in func:
+                check = f
+                if check:
+                    return CheckResult.wrong(check)
+        return CheckResult.correct()'''
+
+
