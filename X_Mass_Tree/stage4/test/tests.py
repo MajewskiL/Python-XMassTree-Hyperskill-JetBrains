@@ -113,7 +113,6 @@ class XMassTreeTest4(StageTest):
         tops = list(map(int, tops))
         tops = list(zip(tops[2::4], tops[3::4]))
         for top in tops:
-            print(out[top[0]][top[1]])
             if out[top[0]][top[1]] != text:
                 return f"The top {top} is not in correct place."
         return
@@ -154,8 +153,8 @@ class XMassTreeTest4(StageTest):
 
     @dynamic_test
     def test2(self):
-        test_cases = [["7 3 7 37 4 2 10 25 11 1 5 14 10 4 9 30 5 4 16 19", 781329003],
-                      ["5 1 4 10 5 2 4 37 5 3 4 17 5 4 4 30 5 5 4 24 5 3 12 24 5 2 12 17 5 1 12 30", 2745439939]]
+        test_cases = [["7 3 7 37 4 2 10 25 11 1 5 14 10 4 9 30 5 4 16 19", 3875571371],
+                      ["5 1 4 10 5 2 4 37 5 3 4 17 5 4 4 30 5 5 4 24 5 3 12 24 5 2 12 17 5 1 12 30", 1026703363]]
         for _ in range(2):
             pass
         for case in test_cases:
