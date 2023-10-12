@@ -1,7 +1,3 @@
-#  !!!!!!!!!!!!!!!!!!!!!!
-#  Algorytm gdzie mam być czubek, czubek choinki, pień, pierwszy i ostatni listek
-#  na jakiej pozycja dla całej choinki, czyli pary koordynatów dla każdej
-#  linii i suma gwiazdek!
 from hstest import StageTest, CheckResult, dynamic_test, TestedProgram
 from random import randint
 

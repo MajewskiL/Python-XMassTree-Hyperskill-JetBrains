@@ -1,12 +1,3 @@
-#  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-#  Programa działać tak, że jak jest para liczb, to rysyje drzewo,
-#  a jak lista to rysuje kartkę. Pozowli to sprawdzić, czy nie namieszali
-#  nic od stage3. Kartal będzie sprawdzana czy zgadza się wymiar, czy jest napis
-#  w opowiedniej linii, a reszta jako funkcja hashująca. Czyli testy mogą wypluć
-#  że któraś choinka źle się rysuje, że jest niepoprawna wielkość kartki,
-#  że napis jest nie w tym miejscu co trzeba i że ułożenie choinek jest złe.
-#  !!!!!!!!!!!!! pierwszy test kartki z example - 1to1 & hash function
-
 from hstest import StageTest, CheckResult, dynamic_test, TestedProgram
 from random import randint
 

@@ -1,6 +1,3 @@
-#  !!!!!!!!!!!!!!!
-#  Stowrzyć algorytm na bombkim, czyli która linia, na której pozycji.
-#  I ilość gwiazdek minus licza bombek ma się zgadzać. :D
 from hstest import StageTest, CheckResult, dynamic_test, TestedProgram
 from random import randint
 
