@@ -8,7 +8,7 @@ class XMassTreeTest4(StageTest):
     def output_len_stage1(out, high):
         out_len = len(out.splitlines())
         if out_len != int(high) + 2:
-            return f"Wrong tree high. Expected {high}, founded {out_len}."
+            return f"Wrong tree height. Expected {high}, founded {out_len}."
         return
 
     @staticmethod
@@ -71,7 +71,7 @@ class XMassTreeTest4(StageTest):
         out = out.splitlines()
         lines_width = [len(n) == width for n in out]
         if len(out) != high:
-            return f"Wrong card size. Expected high {high}, founded {len(out)}"
+            return f"Wrong card size. Expected  height {high}, founded {len(out)}"
         if not all(lines_width):
             print([len(n) for n in out])
             return f"Wrong card size. At least one of the lines has not {width} width.\n" \
