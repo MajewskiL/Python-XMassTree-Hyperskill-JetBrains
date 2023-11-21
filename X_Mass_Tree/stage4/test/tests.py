@@ -104,7 +104,10 @@ class XMassTreeTest4(StageTest):
         tops = list(map(int, tops))
         tops = list(zip(tops[2::4], tops[3::4]))
         for top in tops:
-            if out[top[0]][top[1]] != text:
+            try:
+                if out[top[0]][top[1]] != text:
+                    return f"The top {top} is not in correct place."
+            except IndexError:
                 return f"The top {top} is not in correct place."
         return
 
@@ -153,14 +156,18 @@ class XMassTreeTest4(StageTest):
             main = TestedProgram()
             main.start()
             output = main.execute(case[0])
-            func = [self.check_card(output, 30, 50),
-                    self.check_sentence(output, 30, 50),
-                    self.check_tops(output, case[0]),
-                    self.check_hash(output, case[1])]
-            for f in func:
-                check = f
-                if check:
-                    return CheckResult.wrong(check)
+            check = self.check_card(output, 30, 50)
+            if check:
+                return CheckResult.wrong(check)
+            check = self.check_sentence(output, 30, 50)
+            if check:
+                return CheckResult.wrong(check)
+            check = self.check_tops(output, case[0])
+            if check:
+                return CheckResult.wrong(check)
+            check = self.check_hash(output, case[1])
+            if check:
+                return CheckResult.wrong(check)
         return CheckResult.correct()
 
 
