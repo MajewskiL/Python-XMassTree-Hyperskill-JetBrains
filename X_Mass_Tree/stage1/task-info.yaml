@@ -8,7 +8,3 @@ files:
     visible: false
   - name: test/__init__.py
     visible: false
-  - name: task.py
-    visible: true
-  - name: ds.txt
-    visible: true

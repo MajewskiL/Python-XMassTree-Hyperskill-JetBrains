@@ -55,12 +55,15 @@ class XMassTreeTest2(StageTest):
             main.start()
             high = str(randint(3, 30))
             output = main.execute(high)
-            func = [self.output_len_stage1(output, high),
-                    self.output_ext_stage2(output, int(high)),
-                    self.output_pos_stage2(output, int(high))]
-            for f in func:
-                check = f
-                if check:
-                    return CheckResult.wrong(check)
+
+            check = self.output_len_stage1(output, high)
+            if check:
+                return CheckResult.wrong(check)
+            check = self.output_ext_stage2(output, int(high))
+            if check:
+                return CheckResult.wrong(check)
+            check = self.output_pos_stage2(output, int(high))
+            if check:
+                return CheckResult.wrong(check)
 
         return CheckResult.correct()
