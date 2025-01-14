@@ -8,7 +8,7 @@ class XMassTreeTest2(StageTest):
     def output_len_stage1(out, high):
         out_len = len(out.splitlines())
         if out_len != int(high) + 2:
-            return f"Wrong tree height. Expected {high}, founded {out_len}."
+            return f"Wrong tree height. Expected {int(high) + 2}, founded {out_len}."
         return
 
     @staticmethod

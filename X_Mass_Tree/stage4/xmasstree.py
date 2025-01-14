@@ -65,4 +65,3 @@ else:
 
     data = [trees[x: x + 4] for x in range(0, len(trees), 4)]
     tree4(data)
-
